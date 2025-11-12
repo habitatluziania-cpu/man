@@ -997,20 +997,29 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
       {showAddModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-              <h2 className="text-xl font-bold text-gray-900">Novo Cadastro</h2>
+          <div className={isDarkMode
+            ? "bg-zinc-900 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-zinc-800"
+            : "bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+          }>
+            <div className={isDarkMode
+              ? "sticky top-0 bg-zinc-900 border-b border-zinc-800 px-6 py-4 flex items-center justify-between"
+              : "sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between"
+            }>
+              <h2 className={isDarkMode ? "text-xl font-bold text-white" : "text-xl font-bold text-gray-900"}>Novo Cadastro</h2>
               <button
                 onClick={handleCancelAdd}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className={isDarkMode
+                  ? "p-2 hover:bg-zinc-800 rounded-lg transition-colors"
+                  : "p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                }
               >
-                <X className="w-5 h-5 text-gray-500" />
+                <X className={isDarkMode ? "w-5 h-5 text-slate-400" : "w-5 h-5 text-gray-500"} />
               </button>
             </div>
 
             <div className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nome Completo *</label>
+                <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Nome Completo *</label>
                 <InputWithCopy
                   type="text"
                   value={addForm.full_name}
@@ -1021,7 +1030,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">CPF *</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>CPF *</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.cpf}
@@ -1035,7 +1044,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">NIS (PIS) *</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>NIS (PIS) *</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.nis_pis}
@@ -1046,7 +1055,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Título Eleitoral</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Título Eleitoral</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.voter_registration}
@@ -1058,7 +1067,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Senha *</label>
+                <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Senha *</label>
                 <InputWithCopy
                   type="password"
                   value={addForm.password}
@@ -1070,7 +1079,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Telefone Pessoal *</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Telefone Pessoal *</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.personal_phone}
@@ -1081,7 +1090,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Telefone para Recado 1 *</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Telefone para Recado 1 *</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.reference_phone_1}
@@ -1095,7 +1104,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Telefone para Recado 2</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Telefone para Recado 2</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.reference_phone_2}
@@ -1105,7 +1114,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Telefone para Recado 3</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Telefone para Recado 3</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.reference_phone_3}
@@ -1117,7 +1126,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Endereço Completo *</label>
+                <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Endereço Completo *</label>
                 <InputWithCopy
                   type="text"
                   value={addForm.address}
@@ -1129,7 +1138,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Bairro *</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Bairro *</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.neighborhood}
@@ -1139,7 +1148,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">CEP *</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>CEP *</label>
                   <InputWithCopy
                     type="text"
                     value={addForm.cep}
@@ -1153,7 +1162,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Quantidade de Adultos *</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Quantidade de Adultos *</label>
                   <InputWithCopy
                     type="number"
                     min={1}
@@ -1163,7 +1172,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Quantidade de Menores *</label>
+                  <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Quantidade de Menores *</label>
                   <InputWithCopy
                     type="number"
                     min={0}
@@ -1175,36 +1184,39 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Tem alguma pessoa com deficiência? *</label>
+                <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-2" : "block text-sm font-medium text-gray-700 mb-2"}>Tem alguma pessoa com deficiência? *</label>
                 <div className="flex items-center gap-4 mb-2">
                   <label className="flex items-center gap-2">
                     <input
                       type="radio"
                       checked={addForm.has_disability}
                       onChange={() => setAddForm({ ...addForm, has_disability: true })}
-                      className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                      className={isDarkMode ? "w-4 h-4 text-cyan-500 border-zinc-700 focus:ring-cyan-500" : "w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"}
                     />
-                    <span className="text-sm text-gray-700">Sim</span>
+                    <span className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-gray-700"}>Sim</span>
                   </label>
                   <label className="flex items-center gap-2">
                     <input
                       type="radio"
                       checked={!addForm.has_disability}
                       onChange={() => setAddForm({ ...addForm, has_disability: false, disability_count: undefined })}
-                      className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                      className={isDarkMode ? "w-4 h-4 text-cyan-500 border-zinc-700 focus:ring-cyan-500" : "w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"}
                     />
-                    <span className="text-sm text-gray-700">Não</span>
+                    <span className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-gray-700"}>Não</span>
                   </label>
                 </div>
                 {addForm.has_disability && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Quantos:</label>
+                    <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-1" : "block text-sm font-medium text-gray-700 mb-1"}>Quantos:</label>
                     <input
                       type="number"
                       min="1"
                       value={addForm.disability_count || ''}
                       onChange={(e) => setAddForm({ ...addForm, disability_count: parseInt(e.target.value) || undefined })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                      className={isDarkMode
+                        ? "w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-white rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none"
+                        : "w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                      }
                     />
                   </div>
                 )}
@@ -1216,59 +1228,68 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                     type="checkbox"
                     checked={addForm.female_head_of_household}
                     onChange={(e) => setAddForm({ ...addForm, female_head_of_household: e.target.checked })}
-                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    className={isDarkMode ? "w-4 h-4 text-cyan-500 border-zinc-700 rounded focus:ring-cyan-500" : "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"}
                   />
-                  <span className="text-sm text-gray-700">Mulher Chefe de Família</span>
+                  <span className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-gray-700"}>Mulher Chefe de Família</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={addForm.has_elderly}
                     onChange={(e) => setAddForm({ ...addForm, has_elderly: e.target.checked })}
-                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    className={isDarkMode ? "w-4 h-4 text-cyan-500 border-zinc-700 rounded focus:ring-cyan-500" : "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"}
                   />
-                  <span className="text-sm text-gray-700">Possui Idosos</span>
+                  <span className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-gray-700"}>Possui Idosos</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={addForm.vulnerable_situation}
                     onChange={(e) => setAddForm({ ...addForm, vulnerable_situation: e.target.checked })}
-                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    className={isDarkMode ? "w-4 h-4 text-cyan-500 border-zinc-700 rounded focus:ring-cyan-500" : "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"}
                   />
-                  <span className="text-sm text-gray-700">Situação Vulnerável</span>
+                  <span className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-gray-700"}>Situação Vulnerável</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={addForm.homeless}
                     onChange={(e) => setAddForm({ ...addForm, homeless: e.target.checked })}
-                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    className={isDarkMode ? "w-4 h-4 text-cyan-500 border-zinc-700 rounded focus:ring-cyan-500" : "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"}
                   />
-                  <span className="text-sm text-gray-700">Situação de Rua</span>
+                  <span className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-gray-700"}>Situação de Rua</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     checked={addForm.domestic_violence_victim}
                     onChange={(e) => setAddForm({ ...addForm, domestic_violence_victim: e.target.checked })}
-                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    className={isDarkMode ? "w-4 h-4 text-cyan-500 border-zinc-700 rounded focus:ring-cyan-500" : "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"}
                   />
-                  <span className="text-sm text-gray-700">Vítima de Violência Doméstica</span>
+                  <span className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-gray-700"}>Vítima de Violência Doméstica</span>
                 </label>
               </div>
             </div>
 
-            <div className="sticky bottom-0 bg-gray-50 px-6 py-4 flex gap-3 justify-end border-t border-gray-200">
+            <div className={isDarkMode
+              ? "sticky bottom-0 bg-zinc-950 px-6 py-4 flex gap-3 justify-end border-t border-zinc-800"
+              : "sticky bottom-0 bg-gray-50 px-6 py-4 flex gap-3 justify-end border-t border-gray-200"
+            }>
               <button
                 onClick={handleCancelAdd}
-                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+                className={isDarkMode
+                  ? "px-4 py-2 border border-zinc-700 text-slate-300 rounded-lg hover:bg-zinc-800 transition-colors"
+                  : "px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+                }
               >
                 Cancelar
               </button>
               <button
                 onClick={handleSaveAdd}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className={isDarkMode
+                  ? "px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg shadow-cyan-500/30"
+                  : "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                }
               >
                 Adicionar Cadastro
               </button>
