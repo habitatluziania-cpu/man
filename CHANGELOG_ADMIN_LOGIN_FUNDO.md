@@ -2,9 +2,67 @@
 
 ## Data: 2025-11-12
 
-## Modificação Realizada
+## Última Modificação: 2025-11-12
 
-### Objetivo
+### Objetivo Atual
+Aumentar a opacidade do overlay de 20% para 40% para deixar a imagem de fundo mais escurecida, mantendo os textos e botões perfeitamente legíveis.
+
+---
+
+## MODIFICAÇÃO MAIS RECENTE
+
+### Alteração do Overlay - Linha ~64
+
+**Antes**:
+```jsx
+{/* MODIFICADO: Overlay com 20% de opacidade sobre a imagem de fundo */}
+<div className="absolute inset-0 bg-black/20 -z-10"></div>
+```
+
+**Depois**:
+```jsx
+{/* MODIFICADO: Overlay com 40% de opacidade sobre a imagem de fundo (aumentado de 20% para 40%) */}
+<div className="absolute inset-0 bg-black/40 -z-10"></div>
+```
+
+**Mudança**: `bg-black/20` → `bg-black/40`
+
+### Impacto da Mudança
+
+**Antes (20%)**:
+- Overlay muito sutil
+- Imagem de fundo muito visível
+- Menos contraste
+- Possível dificuldade de leitura em alguns temas
+
+**Depois (40%)**:
+- Overlay moderado
+- Imagem de fundo ainda visível mas mais atenuada
+- Melhor contraste com o card de login
+- Textos e botões perfeitamente legíveis
+- Hierarquia visual melhorada
+
+### Elementos NÃO Afetados
+- ✅ Textos do card (mantêm cor original)
+- ✅ Botões (mantêm cor e legibilidade)
+- ✅ Logo (não afetada)
+- ✅ Campos de input (não afetados)
+- ✅ Botão de tema (não afetado)
+- ✅ Card de login (mantém fundo branco/slate-800)
+
+### Como o Overlay Funciona
+O overlay com `bg-black/40` e `-z-10`:
+- Aplica-se apenas à **camada de fundo**
+- Fica **atrás** do card de login (que tem `z-10`)
+- **NÃO afeta** nenhum conteúdo do card
+- **NÃO afeta** textos ou botões
+- Apenas escurece a imagem de fundo
+
+---
+
+## HISTÓRICO DE MODIFICAÇÕES
+
+### Objetivo Original
 Adicionar a imagem `funco-admin.png` como fundo da página de login administrativo com overlay de 20% de transparência.
 
 ---
