@@ -27,8 +27,8 @@ export const StatsCard: React.FC<StatsCardProps> = ({
     }>
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
-          <div className={`w-6 h-6 ${iconBgColor} rounded-md flex items-center justify-center`}>
-            <Icon className={`w-3 h-3 ${iconColor}`} />
+          <div className={`w-14 h-14 ${iconBgColor} rounded-md flex items-center justify-center`}>
+            <Icon className={`w-7 h-7 ${iconColor}`} />
           </div>
           <p className={isDarkMode ? "text-xs text-slate-400" : "text-xs text-gray-600"}>{label}</p>
         </div>
