@@ -244,8 +244,8 @@ export const MultiStepForm: React.FC = () => {
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* Overlay escuro opcional para melhorar legibilidade */}
-      <div className="absolute inset-0 bg-black/20 -z-10"></div>
+      {/* MODIFICADO: Overlay com 40% de opacidade (mais transparente que antes - era 20%) */}
+      <div className="absolute inset-0 bg-black/40 -z-10"></div>
 
       <div className="max-w-2xl mx-auto relative z-10">
         <div className="flex justify-center mb-6 px-4">

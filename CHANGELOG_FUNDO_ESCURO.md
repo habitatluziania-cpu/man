@@ -1,8 +1,106 @@
-# Changelog - Ajuste de Fundo Escuro no Formulário
+# Changelog - Ajuste de Transparência do Overlay do Fundo
 
 ## Data: 2025-11-12
 
-## Modificações Realizadas
+## Modificação Realizada
+
+### Objetivo
+Aumentar a opacidade do overlay escuro sobre a imagem de fundo de 20% para 40%.
+
+---
+
+## Arquivo Modificado
+
+### `src/components/MultiStepForm.tsx`
+
+#### Alteração: Overlay da Imagem de Fundo
+**Linha ~248**
+
+**Antes**:
+```jsx
+{/* Overlay escuro opcional para melhorar legibilidade */}
+<div className="absolute inset-0 bg-black/20 -z-10"></div>
+```
+
+**Depois**:
+```jsx
+{/* MODIFICADO: Overlay com 40% de opacidade (mais transparente que antes - era 20%) */}
+<div className="absolute inset-0 bg-black/40 -z-10"></div>
+```
+
+**Mudança de Classe**:
+- `bg-black/20` (20% de opacidade) → `bg-black/40` (40% de opacidade)
+
+---
+
+## Detalhes Técnicos
+
+### Opacidade no Tailwind
+
+A notação `/XX` no Tailwind representa a opacidade:
+- `bg-black/20` = 20% de preto (80% transparente)
+- `bg-black/40` = 40% de preto (60% transparente)
+
+---
+
+## Efeito Visual
+
+### Antes (bg-black/20):
+- Overlay muito sutil
+- Imagem de fundo muito visível
+- Menos contraste com o formulário
+
+### Depois (bg-black/40):
+- Overlay moderado
+- Imagem de fundo ainda visível mas mais atenuada
+- Melhor contraste com o formulário
+- Melhor legibilidade dos textos
+
+---
+
+## Estrutura de Camadas
+
+```
+┌─────────────────────────────────┐
+│  Conteúdo (z-10)               │ ← Topo
+├─────────────────────────────────┤
+│  Container Relativo (z-0)      │
+├─────────────────────────────────┤
+│  Overlay Escuro 40% (-z-10)    │ ← MODIFICADO
+├─────────────────────────────────┤
+│  Imagem de Fundo (background)  │ ← Base
+└─────────────────────────────────┘
+```
+
+---
+
+## Elementos NÃO Modificados
+
+- ✅ Imagem de fundo (obras.jpg)
+- ✅ Posicionamento da imagem
+- ✅ Efeito parallax
+- ✅ Container do formulário
+- ✅ Todos os textos e campos
+- ✅ Todas as funcionalidades
+
+---
+
+## Compatibilidade
+
+- ✅ Build testado e funcionando
+- ✅ Classe Tailwind válida
+- ✅ Sem quebra de funcionalidades
+
+---
+
+## Reversão
+
+Para voltar ao estado anterior:
+```jsx
+<div className="absolute inset-0 bg-black/20 -z-10"></div>
+```
+
+## Modificações Anteriores (Mantidas Abaixo)
 
 ### Arquivo Modificado: `src/components/MultiStepForm.tsx`
 
