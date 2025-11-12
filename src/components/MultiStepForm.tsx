@@ -236,8 +236,18 @@ export const MultiStepForm: React.FC = () => {
   const CurrentSection = steps[step].component;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
+    // MODIFICADO: Adicionada imagem de fundo obras.jpg centralizada e cobrindo toda a área
+    <div
+      className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-cover bg-center bg-no-repeat relative"
+      style={{
+        backgroundImage: "url('/obras.jpg')",
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Overlay escuro opcional para melhorar legibilidade */}
+      <div className="absolute inset-0 bg-black/20 -z-10"></div>
+
+      <div className="max-w-2xl mx-auto relative z-10">
         <div className="flex justify-center mb-6 px-4">
           <img
             src="/Habitat-.png"
