@@ -421,8 +421,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
   }
 
   return (
-    <div className={isDarkMode ? "min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" : "min-h-screen bg-gradient-to-br from-gray-50 to-gray-100"}>
-      <header className={isDarkMode ? "bg-gradient-to-r from-slate-900 to-slate-800 border-b border-slate-700 shadow-xl" : "bg-white border-b border-gray-200 shadow-sm"}>
+    <div className={isDarkMode ? "min-h-screen bg-gradient-to-br from-black via-zinc-950 to-black" : "min-h-screen bg-gradient-to-br from-gray-50 to-gray-100"}>
+      <header className={isDarkMode ? "bg-gradient-to-r from-black to-zinc-900 border-b border-zinc-800 shadow-xl" : "bg-white border-b border-gray-200 shadow-sm"}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -439,7 +439,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
               <button
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 className={isDarkMode
-                  ? "p-1.5 bg-slate-700 hover:bg-slate-600 rounded-md transition-all border border-slate-600"
+                  ? "p-1.5 bg-zinc-900 hover:bg-zinc-800 rounded-md transition-all border border-zinc-800"
                   : "p-1.5 bg-gray-100 hover:bg-gray-200 rounded-md transition-all border border-gray-300"
                 }
                 title={isDarkMode ? "Modo Claro" : "Modo Escuro"}
@@ -509,10 +509,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
         </div>
 
         <div className={isDarkMode
-          ? "bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl shadow-lg border border-slate-700"
+          ? "bg-gradient-to-br from-zinc-900 to-black rounded-xl shadow-lg border border-zinc-800"
           : "bg-white rounded-xl shadow-lg border border-gray-200"
         }>
-          <div className={isDarkMode ? "p-6 border-b border-slate-700" : "p-6 border-b border-gray-200"}>
+          <div className={isDarkMode ? "p-6 border-b border-zinc-800" : "p-6 border-b border-gray-200"}>
             <div className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1 relative">
                 <Search className={isDarkMode ? "absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" : "absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"} />
@@ -522,7 +522,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className={isDarkMode
-                    ? "w-full pl-10 pr-4 py-2 bg-slate-700 border border-slate-600 text-white placeholder-slate-400 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all"
+                    ? "w-full pl-10 pr-4 py-2 bg-zinc-900 border border-zinc-800 text-white placeholder-slate-400 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all"
                     : "w-full pl-10 pr-4 py-2 bg-white border border-gray-300 text-gray-900 placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                   }
                 />
@@ -532,7 +532,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
                 className={isDarkMode
-                  ? "px-4 py-2 bg-slate-700 border border-slate-600 text-white rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all"
+                  ? "px-4 py-2 bg-zinc-900 border border-zinc-800 text-white rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all"
                   : "px-4 py-2 bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                 }
               >
@@ -560,7 +560,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className={isDarkMode ? "bg-slate-800/50 border-b border-slate-700" : "bg-gray-50 border-b border-gray-200"}>
+              <thead className={isDarkMode ? "bg-zinc-950/50 border-b border-zinc-800" : "bg-gray-50 border-b border-gray-200"}>
                 <tr>
                   <th className={isDarkMode ? "px-6 py-3 text-left text-xs font-medium text-slate-300 uppercase tracking-wider" : "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"}>
                     Nome
@@ -579,9 +579,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   </th>
                 </tr>
               </thead>
-              <tbody className={isDarkMode ? "divide-y divide-slate-700" : "bg-white divide-y divide-gray-200"}>
+              <tbody className={isDarkMode ? "divide-y divide-zinc-800" : "bg-white divide-y divide-gray-200"}>
                 {currentData.map((reg) => (
-                  <tr key={reg.id} className={isDarkMode ? "hover:bg-slate-700/30 transition-colors" : "hover:bg-gray-50 transition-colors"}>
+                  <tr key={reg.id} className={isDarkMode ? "hover:bg-zinc-900/50 transition-colors" : "hover:bg-gray-50 transition-colors"}>
                     <td className={isDarkMode ? "px-6 py-4 whitespace-nowrap text-sm font-medium text-white" : "px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"}>
                       {reg.full_name}
                     </td>
@@ -631,7 +631,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
           )}
 
           {filteredData.length > 0 && (
-            <div className={isDarkMode ? "mt-6 flex items-center justify-between px-6 py-4 bg-slate-800/50 border-t border-slate-700" : "mt-6 flex items-center justify-between px-6 py-4 bg-gray-50 border-t border-gray-200"}>
+            <div className={isDarkMode ? "mt-6 flex items-center justify-between px-6 py-4 bg-zinc-950/50 border-t border-zinc-800" : "mt-6 flex items-center justify-between px-6 py-4 bg-gray-50 border-t border-gray-200"}>
               <div className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-gray-700"}>
                 Mostrando <span className={isDarkMode ? "font-semibold text-cyan-400" : "font-semibold text-blue-600"}>{startIndex + 1}</span> a{' '}
                 <span className={isDarkMode ? "font-semibold text-cyan-400" : "font-semibold text-blue-600"}>{Math.min(endIndex, filteredData.length)}</span> de{' '}
@@ -643,7 +643,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
                   className={isDarkMode
-                    ? "p-2 text-slate-300 bg-slate-700 border border-slate-600 rounded-lg hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    ? "p-2 text-slate-300 bg-zinc-900 border border-zinc-800 rounded-lg hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     : "p-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   }
                   title="Anterior"
@@ -670,7 +670,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                             ? `px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
                                 currentPage === page
                                   ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/30'
-                                  : 'text-slate-300 bg-slate-700 border border-slate-600 hover:bg-slate-600'
+                                  : 'text-slate-300 bg-zinc-900 border border-zinc-800 hover:bg-zinc-800'
                               }`
                             : `px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
                                 currentPage === page
@@ -689,7 +689,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                   onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
                   className={isDarkMode
-                    ? "p-2 text-slate-300 bg-slate-700 border border-slate-600 rounded-lg hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    ? "p-2 text-slate-300 bg-zinc-900 border border-zinc-800 rounded-lg hover:bg-zinc-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     : "p-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                   }
                   title="Próxima"
@@ -960,7 +960,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className={isDarkMode
-            ? "bg-slate-800 rounded-lg shadow-xl max-w-xs w-full border border-slate-700"
+            ? "bg-zinc-900 rounded-lg shadow-xl max-w-xs w-full border border-zinc-800"
             : "bg-white rounded-lg shadow-xl max-w-xs w-full"
           }>
             <div className="p-5">
@@ -974,7 +974,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                 <button
                   onClick={handleCancelDelete}
                   className={isDarkMode
-                    ? "px-6 py-1.5 text-sm border border-slate-600 text-slate-300 rounded-lg hover:bg-slate-700 transition-colors font-medium"
+                    ? "px-6 py-1.5 text-sm border border-zinc-700 text-slate-300 rounded-lg hover:bg-zinc-800 transition-colors font-medium"
                     : "px-6 py-1.5 text-sm border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors font-medium"
                   }
                 >

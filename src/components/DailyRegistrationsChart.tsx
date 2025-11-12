@@ -31,7 +31,7 @@ export const DailyRegistrationsChart: React.FC<DailyRegistrationsChartProps> = (
 
   return (
     <div className={isDarkMode
-      ? "bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl shadow-lg p-4 border border-slate-700"
+      ? "bg-gradient-to-br from-zinc-900 to-black rounded-xl shadow-lg p-4 border border-zinc-800"
       : "bg-white rounded-xl shadow-lg p-4 border border-gray-200"
     }>
       <h3 className={isDarkMode ? "text-sm font-semibold text-white mb-3" : "text-sm font-semibold text-gray-900 mb-3"}>Cadastros por Dia</h3>

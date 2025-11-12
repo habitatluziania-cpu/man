@@ -22,7 +22,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
 }) => {
   return (
     <div className={isDarkMode
-      ? "bg-gradient-to-br from-slate-800 to-slate-900 rounded-lg shadow-lg p-3 border border-slate-700 hover:border-cyan-500 transition-all duration-300"
+      ? "bg-gradient-to-br from-zinc-900 to-black rounded-lg shadow-lg p-3 border border-zinc-800 hover:border-cyan-500 transition-all duration-300"
       : "bg-white rounded-lg shadow-lg p-3 border border-gray-200 hover:border-blue-500 transition-all duration-300"
     }>
       <div className="flex items-center justify-between mb-2">
@@ -39,7 +39,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
         )}
       </div>
       <p className={isDarkMode ? "text-xl font-bold text-white mb-1.5" : "text-xl font-bold text-gray-900 mb-1.5"}>{value}</p>
-      <div className={isDarkMode ? "h-0.5 bg-slate-700 rounded-full overflow-hidden" : "h-0.5 bg-gray-200 rounded-full overflow-hidden"}>
+      <div className={isDarkMode ? "h-0.5 bg-zinc-800 rounded-full overflow-hidden" : "h-0.5 bg-gray-200 rounded-full overflow-hidden"}>
         <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" style={{ width: '70%' }}></div>
       </div>
     </div>

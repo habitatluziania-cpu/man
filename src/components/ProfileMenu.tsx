@@ -138,7 +138,7 @@ export const ProfileMenu: React.FC<ProfileMenuProps> = ({ isDarkMode = true, onL
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={isDarkMode
-          ? "flex items-center gap-2 p-1.5 hover:bg-slate-700 rounded-md transition-all"
+          ? "flex items-center gap-2 p-1.5 hover:bg-zinc-800 rounded-md transition-all"
           : "flex items-center gap-2 p-1.5 hover:bg-gray-100 rounded-md transition-all"
         }
       >
@@ -159,10 +159,10 @@ export const ProfileMenu: React.FC<ProfileMenuProps> = ({ isDarkMode = true, onL
 
       {isOpen && (
         <div className={isDarkMode
-          ? "absolute right-0 mt-2 w-64 bg-slate-800 border border-slate-700 rounded-lg shadow-xl z-50"
+          ? "absolute right-0 mt-2 w-64 bg-zinc-900 border border-zinc-800 rounded-lg shadow-xl z-50"
           : "absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-xl z-50"
         }>
-          <div className="p-4 border-b border-slate-700">
+          <div className={isDarkMode ? "p-4 border-b border-zinc-800" : "p-4 border-b border-gray-200"}>
             <div className="flex flex-col items-center gap-3">
               <div className="relative group">
                 {profilePhoto ? (
