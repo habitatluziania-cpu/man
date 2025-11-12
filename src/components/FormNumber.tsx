@@ -47,7 +47,8 @@ export const FormNumber: React.FC<FormNumberProps> = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="block text-sm font-medium text-gray-700">
+      {/* MODIFICADO: Label em preto escuro */}
+      <label className="block text-sm font-medium text-gray-900">
         {label}
         {required && <span className="text-red-500 ml-1">*</span>}
       </label>
@@ -59,7 +60,7 @@ export const FormNumber: React.FC<FormNumberProps> = ({
           placeholder={placeholder}
           min={min}
           max={max}
-          className={`flex-1 px-3 py-2 border rounded-lg transition-colors focus:outline-none focus:ring-2 ${
+          className={`flex-1 px-3 py-2 border rounded-lg transition-colors focus:outline-none focus:ring-2 text-gray-900 placeholder-gray-500 ${
             error
               ? 'border-red-500 focus:ring-red-200'
               : 'border-gray-300 focus:ring-blue-200 focus:border-blue-500'

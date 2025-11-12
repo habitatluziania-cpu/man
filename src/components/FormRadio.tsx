@@ -17,7 +17,8 @@ export const FormRadio: React.FC<FormRadioProps> = ({
 }) => {
   return (
     <div className="flex flex-col gap-3">
-      <label className="block text-sm font-medium text-gray-700">
+      {/* MODIFICADO: Label em preto escuro */}
+      <label className="block text-sm font-medium text-gray-900">
         {label}
         {required && <span className="text-red-500 ml-1">*</span>}
       </label>
@@ -30,7 +31,8 @@ export const FormRadio: React.FC<FormRadioProps> = ({
             onChange={() => onChange(true)}
             className="w-4 h-4 cursor-pointer"
           />
-          <label htmlFor={`${label}-yes`} className="cursor-pointer text-sm text-gray-700">
+          {/* MODIFICADO: Labels Sim/Não em preto escuro */}
+          <label htmlFor={`${label}-yes`} className="cursor-pointer text-sm text-gray-900">
             Sim
           </label>
         </div>
@@ -42,7 +44,7 @@ export const FormRadio: React.FC<FormRadioProps> = ({
             onChange={() => onChange(false)}
             className="w-4 h-4 cursor-pointer"
           />
-          <label htmlFor={`${label}-no`} className="cursor-pointer text-sm text-gray-700">
+          <label htmlFor={`${label}-no`} className="cursor-pointer text-sm text-gray-900">
             Não
           </label>
         </div>

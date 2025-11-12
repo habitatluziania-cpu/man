@@ -336,13 +336,14 @@ export const MultiStepForm: React.FC = () => {
           </div>
 
           <div className="flex gap-3 justify-between">
+            {/* MODIFICADO: Botão Anterior com texto preto escuro */}
             <button
               onClick={handlePrevious}
               disabled={step === 0}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
                 step === 0
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
               }`}
             >
               <ChevronLeft className="w-4 h-4" />

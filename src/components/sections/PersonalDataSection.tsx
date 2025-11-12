@@ -25,6 +25,7 @@ export const PersonalDataSection: React.FC<PersonalDataSectionProps> = ({
 }) => {
   return (
     <div className="space-y-6">
+      {/* MODIFICADO: Texto preto escuro para contraste */}
       <h2 className="text-2xl font-bold text-gray-900">Dados Pessoais</h2>
 
       <FormInput

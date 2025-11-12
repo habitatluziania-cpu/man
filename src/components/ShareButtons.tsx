@@ -35,9 +35,10 @@ export const ShareButtons: React.FC = () => {
 
   return (
     <div className="mt-6 pt-6 border-t border-gray-200">
+      {/* MODIFICADO: Texto "Compartilhar formulário" em preto escuro */}
       <div className="flex items-center gap-2 mb-3">
-        <Share2 className="w-4 h-4 text-gray-600" />
-        <span className="text-sm font-medium text-gray-700">Compartilhar formulário:</span>
+        <Share2 className="w-4 h-4 text-gray-900" />
+        <span className="text-sm font-medium text-gray-900">Compartilhar formulário:</span>
       </div>
       <div className="flex flex-wrap gap-3">
         <button
