@@ -1,5 +1,8 @@
-For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
-
-By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
-
-Use icons from lucide-react for logos.
+Para todos os designs que eu solicitar, crie páginas visualmente atraentes, modernas e nada genéricas. Evite 
+padrões prontos ou repetitivos. As páginas devem ser completas, responsivas, usáveis e prontas para produção. 
+Use JSX com Tailwind CSS, shadcn/ui, React Hooks e ícones do Lucide React. Não instale outros pacotes de UI, 
+temas ou bibliotecas de ícones, a menos que eu solicite ou seja estritamente necessário. Utilize ícones do 
+lucide-react como logos e fotos do Unsplash quando fizer sentido. Mantenha o código limpo, modular e 
+reutilizável, com componentes separados e sem lógica duplicada. Prefira classes utilitárias do Tailwind em vez de 
+estilos escritos direto. Use HTML semântico, nomes descritivos para arquivos, funções e componentes, e adicione 
+comentários nos trechos mais complexos. Garanta consistência visual em tipografia, espaçamentos e cores.
