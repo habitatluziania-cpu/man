@@ -60,8 +60,8 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* MODIFICADO: Overlay com 40% de opacidade sobre a imagem de fundo (aumentado de 20% para 40%) */}
-      <div className="absolute inset-0 bg-black/40 -z-10"></div>
+      {/* MODIFICADO: Overlay com 20% de opacidade sobre a imagem de fundo */}
+      <div className="absolute inset-0 bg-black/20 -z-10"></div>
 
       {/* Botão de alternância de tema no canto superior direito */}
       <div className="fixed top-4 right-4 z-50">
