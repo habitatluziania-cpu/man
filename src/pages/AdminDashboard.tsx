@@ -103,10 +103,16 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Erro ao carregar dados:', error);
+        throw error;
+      }
+
+      console.log('Dados carregados:', data);
       setRegistrations(data || []);
     } catch (err) {
       console.error('Erro ao carregar dados:', err);
+      alert('Erro ao carregar cadastros. Verifique se você está logado como administrador.');
     } finally {
       setLoading(false);
     }
@@ -545,16 +551,29 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                 <option value="violence">Vítima de Violência</option>
               </select>
 
-              <button
-                onClick={handleAddNew}
-                className={isDarkMode
-                  ? "flex items-center gap-2 px-4 py-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-all shadow-lg shadow-cyan-500/30"
-                  : "flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
-                }
-              >
-                <Plus className="w-4 h-4" />
-                Novo Cadastro
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={exportToCSV}
+                  className={isDarkMode
+                    ? "flex items-center gap-2 px-4 py-2 bg-zinc-900 text-slate-300 border border-zinc-800 rounded-lg hover:bg-zinc-800 transition-all"
+                    : "flex items-center gap-2 px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-all"
+                  }
+                  title="Exportar para CSV"
+                >
+                  <Download className="w-4 h-4" />
+                  Exportar
+                </button>
+                <button
+                  onClick={handleAddNew}
+                  className={isDarkMode
+                    ? "flex items-center gap-2 px-4 py-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition-all shadow-lg shadow-cyan-500/30"
+                    : "flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
+                  }
+                >
+                  <Plus className="w-4 h-4" />
+                  Novo Cadastro
+                </button>
+              </div>
             </div>
           </div>
 
