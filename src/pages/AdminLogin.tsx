@@ -68,11 +68,11 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
         <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
       </div>
 
-      {/* MODIFICADO: Adicionado relative z-10 para ficar acima do fundo */}
+      {/* MODIFICADO: Adicionado relative z-10 para ficar acima do fundo e bg-opacity-65 para 35% mais transparente */}
       <div className={
         isDarkMode
-          ? "bg-slate-800 border border-slate-700 rounded-2xl shadow-xl p-8 w-full max-w-md relative z-10"
-          : "bg-white rounded-2xl shadow-xl p-8 w-full max-w-md relative z-10"
+          ? "bg-slate-800 bg-opacity-65 border border-slate-700 rounded-2xl shadow-xl p-8 w-full max-w-md relative z-10"
+          : "bg-white bg-opacity-65 rounded-2xl shadow-xl p-8 w-full max-w-md relative z-10"
       }>
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
