@@ -52,20 +52,27 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className={
-      isDarkMode
-        ? "min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4"
-        : "min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4"
-    }>
+    // MODIFICADO: Adicionada imagem de fundo funco-admin.png
+    <div
+      className="min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat relative"
+      style={{
+        backgroundImage: "url('/funco-admin.png')",
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* MODIFICADO: Overlay com 20% de opacidade sobre a imagem de fundo */}
+      <div className="absolute inset-0 bg-black/20 -z-10"></div>
+
       {/* Botão de alternância de tema no canto superior direito */}
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
       </div>
 
+      {/* MODIFICADO: Adicionado relative z-10 para ficar acima do fundo */}
       <div className={
         isDarkMode
-          ? "bg-slate-800 border border-slate-700 rounded-2xl shadow-xl p-8 w-full max-w-md"
-          : "bg-white rounded-2xl shadow-xl p-8 w-full max-w-md"
+          ? "bg-slate-800 border border-slate-700 rounded-2xl shadow-xl p-8 w-full max-w-md relative z-10"
+          : "bg-white rounded-2xl shadow-xl p-8 w-full max-w-md relative z-10"
       }>
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
