@@ -246,11 +246,13 @@ export const MultiStepForm: React.FC = () => {
           />
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
+        {/* MODIFICADO: Fundo mais escuro com 40% de opacidade (bg-black/40) */}
+        <div className="bg-black/40 backdrop-blur-sm rounded-lg shadow-lg p-6 sm:p-8">
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
-              <h1 className="text-3xl font-bold text-gray-900">Pré-Inscrição Habitat Social</h1>
-              <span className="text-sm font-medium text-gray-500">
+              {/* MODIFICADO: Texto branco para contraste com fundo escuro */}
+              <h1 className="text-3xl font-bold text-white">Pré-Inscrição Habitat Social</h1>
+              <span className="text-sm font-medium text-gray-200">
                 Etapa {step + 1} de {steps.length}
               </span>
             </div>
@@ -260,7 +262,7 @@ export const MultiStepForm: React.FC = () => {
                 <div
                   key={index}
                   className={`h-2 flex-1 rounded-full transition-colors ${
-                    index <= step ? 'bg-blue-500' : 'bg-gray-200'
+                    index <= step ? 'bg-blue-500' : 'bg-gray-400'
                   }`}
                 />
               ))}
