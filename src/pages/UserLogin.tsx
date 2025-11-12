@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { LogIn, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { masks, unmask } from '../utils/masks';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { useTheme } from '../hooks/useTheme';
 
 export const UserLogin: React.FC = () => {
   const [cpf, setCpf] = useState('');
@@ -9,6 +11,7 @@ export const UserLogin: React.FC = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState<any>(null);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +67,16 @@ export const UserLogin: React.FC = () => {
 
   if (userData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8">
+      <div className={
+        isDarkMode
+          ? "min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-8 px-4 sm:px-6 lg:px-8"
+          : "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8"
+      }>
+        {/* Botão de alternância de tema no canto superior direito */}
+        <div className="fixed top-4 right-4 z-50">
+          <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
+        </div>
+
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-center mb-6 px-4">
             <img
@@ -74,12 +86,22 @@ export const UserLogin: React.FC = () => {
             />
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
+          <div className={
+            isDarkMode
+              ? "bg-slate-800 border border-slate-700 rounded-lg shadow-lg p-6 sm:p-8"
+              : "bg-white rounded-lg shadow-lg p-6 sm:p-8"
+          }>
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-3xl font-bold text-gray-900">Meus Dados</h1>
+              <h1 className={isDarkMode ? "text-3xl font-bold text-white" : "text-3xl font-bold text-gray-900"}>
+                Meus Dados
+              </h1>
               <button
                 onClick={handleLogout}
-                className="px-4 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                className={
+                  isDarkMode
+                    ? "px-4 py-2 text-sm bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition-colors"
+                    : "px-4 py-2 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                }
               >
                 Sair
               </button>
@@ -88,144 +110,182 @@ export const UserLogin: React.FC = () => {
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">Nome Completo</h3>
-                  <p className="text-lg text-gray-900">{userData.full_name}</p>
+                  <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                    Nome Completo
+                  </h3>
+                  <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{userData.full_name}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">CPF</h3>
-                  <p className="text-lg text-gray-900">{masks.cpf(userData.cpf)}</p>
+                  <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                    CPF
+                  </h3>
+                  <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{masks.cpf(userData.cpf)}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">NIS (PIS)</h3>
-                  <p className="text-lg text-gray-900">{masks.nisPis(userData.nis_pis)}</p>
+                  <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                    NIS (PIS)
+                  </h3>
+                  <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{masks.nisPis(userData.nis_pis)}</p>
                 </div>
 
                 {userData.voter_registration && (
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">Título Eleitoral</h3>
-                    <p className="text-lg text-gray-900">{masks.voterRegistration(userData.voter_registration)}</p>
+                    <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                      Título Eleitoral
+                    </h3>
+                    <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{masks.voterRegistration(userData.voter_registration)}</p>
                   </div>
                 )}
 
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">Telefone Pessoal</h3>
-                  <p className="text-lg text-gray-900">{masks.phone(userData.personal_phone)}</p>
+                  <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                    Telefone Pessoal
+                  </h3>
+                  <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{masks.phone(userData.personal_phone)}</p>
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-medium text-gray-500 mb-1">Telefone de Referência 1</h3>
-                  <p className="text-lg text-gray-900">{masks.phone(userData.reference_phone_1)}</p>
+                  <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                    Telefone de Referência 1
+                  </h3>
+                  <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{masks.phone(userData.reference_phone_1)}</p>
                 </div>
 
                 {userData.reference_phone_2 && (
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">Telefone de Referência 2</h3>
-                    <p className="text-lg text-gray-900">{masks.phone(userData.reference_phone_2)}</p>
+                    <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                      Telefone de Referência 2
+                    </h3>
+                    <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{masks.phone(userData.reference_phone_2)}</p>
                   </div>
                 )}
 
                 {userData.reference_phone_3 && (
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">Telefone de Referência 3</h3>
-                    <p className="text-lg text-gray-900">{masks.phone(userData.reference_phone_3)}</p>
+                    <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                      Telefone de Referência 3
+                    </h3>
+                    <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{masks.phone(userData.reference_phone_3)}</p>
                   </div>
                 )}
               </div>
 
-              <div className="border-t border-gray-200 pt-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Endereço</h2>
+              <div className={isDarkMode ? "border-t border-slate-700 pt-6" : "border-t border-gray-200 pt-6"}>
+                <h2 className={isDarkMode ? "text-xl font-bold text-white mb-4" : "text-xl font-bold text-gray-900 mb-4"}>
+                  Endereço
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">Endereço</h3>
-                    <p className="text-lg text-gray-900">{userData.address}</p>
+                    <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                      Endereço
+                    </h3>
+                    <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{userData.address}</p>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">Bairro</h3>
-                    <p className="text-lg text-gray-900">{userData.neighborhood}</p>
+                    <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                      Bairro
+                    </h3>
+                    <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{userData.neighborhood}</p>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">CEP</h3>
-                    <p className="text-lg text-gray-900">{masks.cep(userData.cep)}</p>
+                    <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                      CEP
+                    </h3>
+                    <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{masks.cep(userData.cep)}</p>
                   </div>
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Composição Familiar</h2>
+              <div className={isDarkMode ? "border-t border-slate-700 pt-6" : "border-t border-gray-200 pt-6"}>
+                <h2 className={isDarkMode ? "text-xl font-bold text-white mb-4" : "text-xl font-bold text-gray-900 mb-4"}>
+                  Composição Familiar
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">Adultos</h3>
-                    <p className="text-lg text-gray-900">{userData.adults_count}</p>
+                    <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                      Adultos
+                    </h3>
+                    <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{userData.adults_count}</p>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 mb-1">Menores</h3>
-                    <p className="text-lg text-gray-900">{userData.minors_count}</p>
+                    <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                      Menores
+                    </h3>
+                    <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{userData.minors_count}</p>
                   </div>
 
                   {userData.has_disability && (
                     <div>
-                      <h3 className="text-sm font-medium text-gray-500 mb-1">Pessoas com Deficiência</h3>
-                      <p className="text-lg text-gray-900">{userData.disability_count || 0}</p>
+                      <h3 className={isDarkMode ? "text-sm font-medium text-slate-400 mb-1" : "text-sm font-medium text-gray-500 mb-1"}>
+                        Pessoas com Deficiência
+                      </h3>
+                      <p className={isDarkMode ? "text-lg text-white" : "text-lg text-gray-900"}>{userData.disability_count || 0}</p>
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-6">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">Perfil Socioeconômico</h2>
+              <div className={isDarkMode ? "border-t border-slate-700 pt-6" : "border-t border-gray-200 pt-6"}>
+                <h2 className={isDarkMode ? "text-xl font-bold text-white mb-4" : "text-xl font-bold text-gray-900 mb-4"}>
+                  Perfil Socioeconômico
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {userData.female_head_of_household && (
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      <p className="text-gray-900">Mulher chefe de família</p>
+                      <div className={isDarkMode ? "w-2 h-2 bg-cyan-400 rounded-full" : "w-2 h-2 bg-blue-500 rounded-full"}></div>
+                      <p className={isDarkMode ? "text-slate-200" : "text-gray-900"}>Mulher chefe de família</p>
                     </div>
                   )}
 
                   {userData.has_elderly && (
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      <p className="text-gray-900">Possui idosos</p>
+                      <div className={isDarkMode ? "w-2 h-2 bg-cyan-400 rounded-full" : "w-2 h-2 bg-blue-500 rounded-full"}></div>
+                      <p className={isDarkMode ? "text-slate-200" : "text-gray-900"}>Possui idosos</p>
                     </div>
                   )}
 
                   {userData.vulnerable_situation && (
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      <p className="text-gray-900">Em situação de vulnerabilidade</p>
+                      <div className={isDarkMode ? "w-2 h-2 bg-rose-400 rounded-full" : "w-2 h-2 bg-red-500 rounded-full"}></div>
+                      <p className={isDarkMode ? "text-slate-200" : "text-gray-900"}>Em situação de vulnerabilidade</p>
                     </div>
                   )}
 
                   {userData.homeless && (
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      <p className="text-gray-900">Em situação de rua</p>
+                      <div className={isDarkMode ? "w-2 h-2 bg-rose-400 rounded-full" : "w-2 h-2 bg-red-500 rounded-full"}></div>
+                      <p className={isDarkMode ? "text-slate-200" : "text-gray-900"}>Em situação de rua</p>
                     </div>
                   )}
 
                   {userData.domestic_violence_victim && (
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      <p className="text-gray-900">Vítima de violência doméstica</p>
+                      <div className={isDarkMode ? "w-2 h-2 bg-rose-400 rounded-full" : "w-2 h-2 bg-red-500 rounded-full"}></div>
+                      <p className={isDarkMode ? "text-slate-200" : "text-gray-900"}>Vítima de violência doméstica</p>
                     </div>
                   )}
 
                   {userData.cohabitation && (
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                      <p className="text-gray-900">Em coabitação</p>
+                      <div className={isDarkMode ? "w-2 h-2 bg-cyan-400 rounded-full" : "w-2 h-2 bg-blue-500 rounded-full"}></div>
+                      <p className={isDarkMode ? "text-slate-200" : "text-gray-900"}>Em coabitação</p>
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-6">
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="text-sm text-blue-800">
+              <div className={isDarkMode ? "border-t border-slate-700 pt-6" : "border-t border-gray-200 pt-6"}>
+                <div className={
+                  isDarkMode
+                    ? "bg-slate-700 border border-slate-600 rounded-lg p-4"
+                    : "bg-blue-50 border border-blue-200 rounded-lg p-4"
+                }>
+                  <p className={isDarkMode ? "text-sm text-slate-300" : "text-sm text-blue-800"}>
                     <strong>Data de inscrição:</strong> {new Date(userData.created_at).toLocaleDateString('pt-BR', {
                       day: '2-digit',
                       month: '2-digit',
@@ -244,7 +304,16 @@ export const UserLogin: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8 flex items-center">
+    <div className={
+      isDarkMode
+        ? "min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-8 px-4 sm:px-6 lg:px-8 flex items-center"
+        : "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4 sm:px-6 lg:px-8 flex items-center"
+    }>
+      {/* Botão de alternância de tema no canto superior direito */}
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
+      </div>
+
       <div className="max-w-md mx-auto w-full">
         <div className="flex justify-center mb-6">
           <img
@@ -254,8 +323,14 @@ export const UserLogin: React.FC = () => {
           />
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">Login do Inscrito</h1>
+        <div className={
+          isDarkMode
+            ? "bg-slate-800 border border-slate-700 rounded-lg shadow-lg p-6 sm:p-8"
+            : "bg-white rounded-lg shadow-lg p-6 sm:p-8"
+        }>
+          <h1 className={isDarkMode ? "text-3xl font-bold text-white mb-6" : "text-3xl font-bold text-gray-900 mb-6"}>
+            Login do Inscrito
+          </h1>
 
           {error && (
             <div className="mb-6 p-4 rounded-lg flex items-center gap-3 bg-red-50 border border-red-200">
@@ -266,7 +341,7 @@ export const UserLogin: React.FC = () => {
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-2" : "block text-sm font-medium text-gray-700 mb-2"}>
                 CPF <span className="text-red-500">*</span>
               </label>
               <input
@@ -276,12 +351,16 @@ export const UserLogin: React.FC = () => {
                 placeholder="000.000.000-00"
                 maxLength={14}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
+                className={
+                  isDarkMode
+                    ? "w-full px-3 py-2 bg-slate-700 border border-slate-600 text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
+                    : "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
+                }
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-2" : "block text-sm font-medium text-gray-700 mb-2"}>
                 Senha <span className="text-red-500">*</span>
               </label>
               <input
@@ -290,14 +369,22 @@ export const UserLogin: React.FC = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Digite sua senha"
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
+                className={
+                  isDarkMode
+                    ? "w-full px-3 py-2 bg-slate-700 border border-slate-600 text-white placeholder-slate-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
+                    : "w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
+                }
               />
             </div>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className={
+                isDarkMode
+                  ? "w-full flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-medium hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg shadow-cyan-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                  : "w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              }
             >
               {isLoading ? (
                 'Entrando...'
@@ -310,9 +397,9 @@ export const UserLogin: React.FC = () => {
             </button>
 
             <div className="text-center">
-              <p className="text-sm text-gray-600">
+              <p className={isDarkMode ? "text-sm text-slate-400" : "text-sm text-gray-600"}>
                 Não tem cadastro?{' '}
-                <a href="/" className="text-blue-600 hover:text-blue-700 font-medium">
+                <a href="/" className={isDarkMode ? "text-cyan-400 hover:text-cyan-300 font-medium" : "text-blue-600 hover:text-blue-700 font-medium"}>
                   Faça sua pré-inscrição
                 </a>
               </p>

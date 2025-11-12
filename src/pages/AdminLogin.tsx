@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Lock, Mail, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { useTheme } from '../hooks/useTheme';
 
 interface AdminLoginProps {
   onLoginSuccess: () => void;
@@ -11,6 +13,7 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,8 +52,21 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+    <div className={
+      isDarkMode
+        ? "min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4"
+        : "min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4"
+    }>
+      {/* Botão de alternância de tema no canto superior direito */}
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle isDarkMode={isDarkMode} onToggle={toggleTheme} />
+      </div>
+
+      <div className={
+        isDarkMode
+          ? "bg-slate-800 border border-slate-700 rounded-2xl shadow-xl p-8 w-full max-w-md"
+          : "bg-white rounded-2xl shadow-xl p-8 w-full max-w-md"
+      }>
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <img
@@ -59,8 +75,12 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
               className="h-24 w-auto object-contain"
             />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">Painel Administrativo</h1>
-          <p className="text-gray-600 mt-2">Faça login para acessar os dados</p>
+          <h1 className={isDarkMode ? "text-2xl font-bold text-white" : "text-2xl font-bold text-gray-900"}>
+            Painel Administrativo
+          </h1>
+          <p className={isDarkMode ? "text-slate-400 mt-2" : "text-gray-600 mt-2"}>
+            Faça login para acessar os dados
+          </p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-6">
@@ -72,17 +92,21 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
           )}
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="email" className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-2" : "block text-sm font-medium text-gray-700 mb-2"}>
               E-mail
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Mail className={isDarkMode ? "absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" : "absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"} />
               <input
                 type="email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                className={
+                  isDarkMode
+                    ? "w-full pl-10 pr-4 py-3 bg-slate-700 border border-slate-600 text-white placeholder-slate-400 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-colors"
+                    : "w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                }
                 placeholder="seu@email.com"
                 required
               />
@@ -90,17 +114,21 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className={isDarkMode ? "block text-sm font-medium text-slate-300 mb-2" : "block text-sm font-medium text-gray-700 mb-2"}>
               Senha
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Lock className={isDarkMode ? "absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" : "absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"} />
               <input
                 type="password"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                className={
+                  isDarkMode
+                    ? "w-full pl-10 pr-4 py-3 bg-slate-700 border border-slate-600 text-white placeholder-slate-400 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-colors"
+                    : "w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                }
                 placeholder="••••••••"
                 required
               />
@@ -110,7 +138,11 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className={
+              isDarkMode
+                ? "w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all shadow-lg shadow-cyan-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
+                : "w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+            }
           >
             {loading ? 'Entrando...' : 'Entrar'}
           </button>
