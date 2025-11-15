@@ -105,9 +105,10 @@ export const THEMES = {
  * Facilita manutenção e personalização visual
  */
 export const THEME_COLORS = {
-  // Cor de fundo do card principal com 20% de transparência
-  // bg-white/80 = fundo branco com 80% de opacidade (20% transparente)
-  CARD_BACKGROUND: 'bg-white/80',
+  // Cor de fundo do card principal com 25% de transparência
+  // bg-white/75 = fundo branco com 75% de opacidade (25% transparente)
+  // MODIFICADO: Alterado de bg-white/80 (20%) para bg-white/75 (25%)
+  CARD_BACKGROUND: 'bg-white/75',
 
   // Cor do overlay de fundo da página (40% de opacidade)
   OVERLAY_BACKGROUND: 'bg-black/40',

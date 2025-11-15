@@ -12,8 +12,9 @@ import { THEME_COLORS } from '../constants';
  */
 export const CARD_EFFECTS = {
   // Nível de transparência do card (0-100)
-  // 20 = 20% transparente (80% opaco)
-  TRANSPARENCY_PERCENT: 20,
+  // 25 = 25% transparente (75% opaco)
+  // MODIFICADO: Alterado de 20 para 25
+  TRANSPARENCY_PERCENT: 25,
 
   // Classe Tailwind para o desfoque de fundo
   // backdrop-blur-sm = desfoque leve
