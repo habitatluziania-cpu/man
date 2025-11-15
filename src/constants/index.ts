@@ -98,3 +98,26 @@ export const THEMES = {
   LIGHT: 'light',
   DARK: 'dark',
 } as const;
+
+/**
+ * Constantes de cores do tema do formulário
+ * Define o esquema de cores padrão para o card principal
+ * Facilita manutenção e personalização visual
+ */
+export const THEME_COLORS = {
+  // Cor de fundo do card principal
+  CARD_BACKGROUND: 'bg-white',
+
+  // Cor do overlay de fundo da página
+  OVERLAY_BACKGROUND: 'bg-black/40',
+
+  // Cores dos textos principais
+  TEXT_PRIMARY: 'text-gray-900',
+  TEXT_SECONDARY: 'text-gray-600',
+  TEXT_LABEL: 'text-gray-700',
+
+  // Cores dos botões
+  BUTTON_PRIMARY: 'bg-blue-600 hover:bg-blue-700 text-white',
+  BUTTON_SECONDARY: 'bg-gray-200 hover:bg-gray-300 text-gray-900',
+  BUTTON_DISABLED: 'bg-gray-100 text-gray-400',
+} as const;

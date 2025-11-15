@@ -8,6 +8,7 @@ import { ShareButtons } from './ShareButtons';
 import { supabase } from '../lib/supabase';
 import { validation, getValidationError } from '../utils/validation';
 import { unmask } from '../utils/masks';
+import { THEME_COLORS } from '../constants';
 
 interface FormData {
   fullName: string;
@@ -248,8 +249,8 @@ export const MultiStepForm: React.FC = () => {
       <div className="absolute inset-0 bg-black/40 -z-10"></div>
 
       <div className="max-w-2xl mx-auto relative z-10">
-        {/* MODIFICADO: Fundo mais escuro com 40% de opacidade (bg-black/40) */}
-        <div className="bg-black/40 backdrop-blur-sm rounded-lg shadow-lg p-6 sm:p-8">
+        {/* Card principal com fundo branco */}
+        <div className={`${THEME_COLORS.CARD_BACKGROUND} rounded-lg shadow-xl p-6 sm:p-8`}>
           {/* Logo centralizada dentro do card */}
           <div className="flex justify-center mb-6">
             <img
@@ -261,9 +262,9 @@ export const MultiStepForm: React.FC = () => {
 
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
-              {/* MODIFICADO: Texto branco para contraste com fundo escuro */}
-              <h1 className="text-3xl font-bold text-white">Pré-Inscrição Habitat Social</h1>
-              <span className="text-sm font-medium text-gray-200">
+              {/* Título principal com cor escura para contraste com fundo branco */}
+              <h1 className={`text-3xl font-bold ${THEME_COLORS.TEXT_PRIMARY}`}>Pré-Inscrição Habitat Social</h1>
+              <span className={`text-sm font-medium ${THEME_COLORS.TEXT_SECONDARY}`}>
                 Etapa {step + 1} de {steps.length}
               </span>
             </div>
@@ -337,24 +338,25 @@ export const MultiStepForm: React.FC = () => {
           </div>
 
           <div className="flex gap-3 justify-between">
-            {/* MODIFICADO: Botão Anterior com texto preto escuro */}
+            {/* Botão Anterior com estilização baseada em constantes */}
             <button
               onClick={handlePrevious}
               disabled={step === 0}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
                 step === 0
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : 'bg-gray-200 text-gray-900 hover:bg-gray-300'
+                  ? THEME_COLORS.BUTTON_DISABLED + ' cursor-not-allowed'
+                  : THEME_COLORS.BUTTON_SECONDARY
               }`}
             >
               <ChevronLeft className="w-4 h-4" />
               Anterior
             </button>
 
+            {/* Botão Próximo/Enviar com cor primária */}
             <button
               onClick={step === steps.length - 1 ? handleSubmit : handleNext}
               disabled={isSubmitting}
-              className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className={`flex items-center gap-2 px-6 py-2 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${THEME_COLORS.BUTTON_PRIMARY}`}
             >
               {step === steps.length - 1 ? (
                 <>
