@@ -38,10 +38,7 @@ export const StatsCard: React.FC<StatsCardProps> = ({
           </span>
         )}
       </div>
-      <p className={isDarkMode ? "text-xl font-bold text-white mb-1.5 text-center" : "text-xl font-bold text-gray-900 mb-1.5 text-center"}>{value}</p>
-      <div className={isDarkMode ? "h-0.5 bg-zinc-800 rounded-full overflow-hidden" : "h-0.5 bg-gray-200 rounded-full overflow-hidden"}>
-        <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full" style={{ width: '70%' }}></div>
-      </div>
+      <p className={isDarkMode ? "text-xl font-bold text-white text-center" : "text-xl font-bold text-gray-900 text-center"}>{value}</p>
     </div>
   );
 };
