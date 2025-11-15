@@ -22,16 +22,16 @@ export const StatsCard: React.FC<StatsCardProps> = ({
 }) => {
   return (
     <div className={isDarkMode
-      ? "bg-gradient-to-br from-zinc-900 to-black rounded-lg shadow-lg p-3 border border-zinc-800 hover:border-cyan-500 transition-all duration-300"
-      : "bg-white rounded-lg shadow-lg p-3 border border-gray-200 hover:border-blue-500 transition-all duration-300"
+      ? "bg-gradient-to-br from-zinc-900 to-black rounded-lg shadow-lg p-6 border border-zinc-800 hover:border-cyan-500 transition-all duration-300"
+      : "bg-white rounded-lg shadow-lg p-6 border border-gray-200 hover:border-blue-500 transition-all duration-300"
     }>
-      <div className="flex items-center gap-2 mb-2">
-        <div className={`w-14 h-14 ${iconBgColor} rounded-md flex items-center justify-center`}>
-          <Icon className={`w-7 h-7 ${iconColor}`} />
+      <div className="flex flex-col items-center justify-center gap-4">
+        <div className={`w-16 h-16 ${iconBgColor} rounded-lg flex items-center justify-center`}>
+          <Icon className={`w-8 h-8 ${iconColor}`} />
         </div>
-        <p className={isDarkMode ? "text-xs text-slate-400" : "text-xs text-gray-600"}>{label}</p>
+        <p className={isDarkMode ? "text-sm font-medium text-slate-300" : "text-sm font-medium text-gray-600"}>{label}</p>
+        <p className={isDarkMode ? "text-3xl font-bold text-white" : "text-3xl font-bold text-gray-900"}>{value}</p>
       </div>
-      <p className={isDarkMode ? "text-xl font-bold text-white text-center" : "text-xl font-bold text-gray-900 text-center"}>{value}</p>
     </div>
   );
 };
