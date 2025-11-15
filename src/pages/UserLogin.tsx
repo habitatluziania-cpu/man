@@ -78,14 +78,6 @@ export const UserLogin: React.FC = () => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="flex justify-center mb-6 px-4">
-            <img
-              src="/Habitat-login copy.png"
-              alt="Logo Habitat"
-              className="h-20 sm:h-28 md:h-32 lg:h-36 w-auto max-w-full object-contain"
-            />
-          </div>
-
           <div className={
             isDarkMode
               ? "bg-slate-800 border border-slate-700 rounded-lg shadow-lg p-6 sm:p-8"
@@ -315,14 +307,6 @@ export const UserLogin: React.FC = () => {
       </div>
 
       <div className="max-w-md mx-auto w-full">
-        <div className="flex justify-center mb-6">
-          <img
-            src="/Habitat-login copy.png"
-            alt="Logo Habitat"
-            className="h-20 sm:h-28 md:h-32 w-auto max-w-full object-contain"
-          />
-        </div>
-
         <div className={
           isDarkMode
             ? "bg-slate-800 border border-slate-700 rounded-lg shadow-lg p-6 sm:p-8"
