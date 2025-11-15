@@ -9,6 +9,7 @@ import { supabase } from '../lib/supabase';
 import { validation, getValidationError } from '../utils/validation';
 import { unmask } from '../utils/masks';
 import { THEME_COLORS } from '../constants';
+import { getCardClasses } from '../utils/cardStyles';
 
 interface FormData {
   fullName: string;
@@ -249,8 +250,15 @@ export const MultiStepForm: React.FC = () => {
       <div className="absolute inset-0 bg-black/40 -z-10"></div>
 
       <div className="max-w-2xl mx-auto relative z-10">
-        {/* Card principal com fundo branco */}
-        <div className={`${THEME_COLORS.CARD_BACKGROUND} rounded-lg shadow-xl p-6 sm:p-8`}>
+        {/*
+          Card principal com:
+          - Fundo branco 20% transparente (bg-white/80)
+          - Efeito de desfoque no fundo (backdrop-blur-md)
+          - Sombra proeminente (shadow-xl)
+          - Cantos arredondados (rounded-lg)
+          - Padding responsivo
+        */}
+        <div className={getCardClasses()}>
           {/* Logo centralizada dentro do card */}
           <div className="flex justify-center mb-6">
             <img
