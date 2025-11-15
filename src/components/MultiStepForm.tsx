@@ -248,14 +248,6 @@ export const MultiStepForm: React.FC = () => {
       <div className="absolute inset-0 bg-black/40 -z-10"></div>
 
       <div className="max-w-2xl mx-auto relative z-10">
-        <div className="flex justify-center mb-6 px-4">
-          <img
-            src="/Habitat-.png"
-            alt="Logo Habitat"
-            className="h-32 sm:h-44 md:h-52 lg:h-58 w-auto max-w-full object-contain"
-          />
-        </div>
-
         {/* MODIFICADO: Fundo mais escuro com 40% de opacidade (bg-black/40) */}
         <div className="bg-black/40 backdrop-blur-sm rounded-lg shadow-lg p-6 sm:p-8">
           <div className="mb-8">
